@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace CoreCamp.Controllers
 {
-    public class CategoryController : Controller
+    public class BlogController : Controller
     {
-        CategoryManager cm = new CategoryManager(new EfCategoryRepository());
+        BlogManager bm = new BlogManager(new EfBlogRepository());
+
         public IActionResult Index()
         {
-            var values = cm.GetList();
+            var values = bm.GetList();
             return View(values);
         }
     }
